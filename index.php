@@ -96,7 +96,7 @@ $db= conectarDB();
             
             while ( $movie= mysqli_fetch_assoc($resultado)) { ?>
             <div class="movie-cell">    
-                    <img src="img/<?php echo $movie["id_movie"];?>.webp" alt="img movie" class="movie-a" > 
+                    <img src="img/<?php echo $movie["imagen"];?>.webp" alt="img movie" class="movie-a" > 
                     <p class="p-star"><?php echo round(($movie['estrellas']/2), 1);?>
                  
                     <img src="img/star-regular.svg" alt="star" class="img-star" srcset=""></p>     
@@ -108,7 +108,7 @@ $db= conectarDB();
     </main>
 <div class="flotante">
 <a href="index.php">
-  <img src="img/arrow-up-solid.svg" alt="UP-arrow" srcset="">
+  <img src="img/uparrow.svg " alt="UP-arrow" srcset="">
 </a>
 </div>
     <footer>
@@ -117,7 +117,7 @@ $db= conectarDB();
                 <a class="" href="#">Terminos y Condiciones</a>
                 <a class="" href="#">Preguntas Frecuentes</a>
                 <a class="" href="#">Ayuda</a>
-                <a class="sesion" href="login.php">Administrador de Peliculas</a>
+                <a class="sesion" href="admin.php">Administrador de Peliculas</a>
             </nav>
           </div>
     </footer>

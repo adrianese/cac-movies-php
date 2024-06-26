@@ -1,5 +1,17 @@
 
-        // INICIO DE SESION Verificacion JS ////
+
+document.addEventListener('DOMContentLoaded', function(){
+   const banner = document.querySelector('.ajuste');
+   //console.log(banner);
+   if (banner) {
+    setTimeout(() => {
+        banner.remove();
+        }, 5000);
+   }
+ });
+    
+    
+    // INICIO DE SESION Verificacion JS ////
 
     const email= document.getElementById('email');
     const password = document.getElementById('password');

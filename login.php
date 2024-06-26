@@ -21,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST') {
     $_SESSION['esadmin']= $datos['esadmin'];
 
     if ($password === $datos['password'] && $datos['esadmin']==='0') {
-        header('Location: /usuario.php');  
+        header('Location: admin/usuario.php?modo=todas');  
     }
     elseif ($password === $datos['password'] && $datos['esadmin']==='1') { 
-        header('Location: /admin.php');
+        header('Location: admin/admin.php');
     }
  
     } else{

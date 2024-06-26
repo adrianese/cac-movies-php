@@ -39,7 +39,7 @@ let items=38;  // total items
       if (!movies[i]){break}
       plantilla+=  `  
       <div class="movie-cell box"> 
-      <img src=img/${movies[i].id_movie}.webp alt="Movie" class="movie">
+      <img src=img/${movies[i].imagen}.webp alt="Movie" class="movie">
       <a href="resumen.php?item=${movies[i].id_movie}">
       <div class="capa">
       <h4>${movies[i].titulo}</h4>
@@ -107,7 +107,7 @@ async function nuevaBusqueda(campo){
             //elementos que varian con contenido
            plantilla+= `
            <div class="movie-cell box"> 
-           <img src=img/${movies[i].id_movie}.webp alt="Movie" class="movie">
+           <img src=img/${movies[i].imagen}.webp alt="Movie" class="movie">
            <a href="resumen.php?item=${movies[i].id_movie}">
            <div class="capa">
            <h4>${movies[i].titulo}</h4>

@@ -3,7 +3,7 @@
 
 
 function conectarDB() : mysqli {
-    $db = mysqli_connect('localhost', 'root', '0077', 'cacmovies');
+    $db = new mysqli('localhost', 'root', '0077', 'cacmovies');
 
     if (!$db) {
          echo "no se conecto" ; 
@@ -19,3 +19,4 @@ function conectarDB() : mysqli {
         echo'</pre>';
         exit;
     }
+
