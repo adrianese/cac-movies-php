@@ -1,5 +1,4 @@
-    <?php 
-    session_start();
+<?php  
     $nombre = $_SESSION['nombre'] ?? "Admin";
     $director_consulta= "";
     $mensaje="";
@@ -13,8 +12,8 @@
     $query = "SELECT id_usuario, nombre, apellido, email, fecha_nac, pais, esadmin, info FROM usuarios;";
     $consulta_usuarios = mysqli_query($db, $query);
 
-    ?>
-
+    $query = "SELECT id_director, nombre, apellido FROM directores;";
+    $consulta_directores = mysqli_query($db, $query);?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -40,7 +39,7 @@
         <header >
         <div class="nav-bg nav-principal">
             <div class="link-logo ">
-                <a class="logo-link animate__animated animate__shakeX "  href="index.php">
+                <a class="logo-link animate__animated animate__shakeX "  href="./../index.php">
                <img class="logo" src="./../img/film-solid.svg" alt="LOGO">
                 CAC-Movies</a>
             </div>
@@ -56,6 +55,8 @@
             <section id="secPelis"  class="contenedor-mv">      
             
             <h2 class="tabla-titulo">Cargar Películas</h2>
+            <p>1. Primero Verificar Director.</p>
+            <p>2. Luego Cargar Película.</p>
                 <?php if ($mensaje) { ?>
                     <div class="<?php echo $alerta; ?> ajuste">
                 <?php echo $mensaje;?>
@@ -93,10 +94,19 @@
                     <label for="imagen">Imagen</label>
                     <input type="file" placeholder="Imagen.webp" 
                     name="imagen"  accept="image/webp" value="">   
+                
+                    <label for="director">Director</label>   
+                  
+                    <select class="" id="" value="" autocomplete="off" name="director">
+                    <option class="input-text" selected disabled >-Seleccione el Director-</option>
+                    <?php while($director= mysqli_fetch_assoc($consulta_directores)) { ?> 
+                  
+                    <option class="input-text" value="<?php echo $director['id_director'];?>"><?php echo $director['nombre'];?> <?php echo $director['apellido'];?></option> 
                     
-                    <label for="director">Id del Director</label>
-                    <input type="text" placeholder="Id del Director" 
-                    name="director" value="" id="">
+                    <?php } ?>
+                </select>
+         
+                 
   
             <div class="">
                 <button type= "submit" class="boton" name="guardar" value="guardar_peli" >Guardar</button>    
@@ -113,7 +123,7 @@
             <div class="nav-logo"></div>
             <nav class="nav-enlaces">   
             <a class="" href="">Copiright 2024</a>
-            <a class="sesion" href="login.php">Administrador de Peliculas</a>
+            <a class="sesion" href="admin.php">Administrador de Peliculas</a>
             </nav>
         </div>
     </footer>

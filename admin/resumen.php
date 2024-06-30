@@ -1,14 +1,14 @@
 <?php
-session_start();
 include './../config/database.php';
+session_start();
 if ($_GET) {
     $id = $_GET['item'];
-}
+    $_SESSION['item']= $id;
+    }
 $db=conectardB();
 $query = " SELECT * FROM movies INNER JOIN directores WHERE movies.id_movie = $id AND movies.director = directores.id_director ";
 // $query= " SELECT * FROM movies WHERE id = '$id'";
 $consulta = mysqli_query($db, $query);
-//
 ?>
 
 
@@ -34,7 +34,7 @@ $consulta = mysqli_query($db, $query);
     <header >
         <div class="nav-bg nav-principal">
             <div class="link-logo ">
-                <a class="logo-link animate__animated animate__shakeX "  href="index.php">
+                <a class="logo-link animate__animated animate__shakeX "  href="./../index.php">
                <img class="logo" src="./../img/film-solid.svg" alt="LOGO">
                 CAC-Movies</a>
             </div>
@@ -48,16 +48,16 @@ $consulta = mysqli_query($db, $query);
     <main class="resumen">
 
         <?php while ( $movie= mysqli_fetch_assoc($consulta)) { 
-            // debuguear($movie);
+         $_SESSION['item']= $movie['id_movie'];
             ?>
-             
+            
             <div id="resumen" class="foto-resumen">
                 <div class="movie-cell box"> 
                 <img src="./../img/<?php echo $movie['imagen']?>.webp" alt="img movie" class="movie" >
                 </div> 
 
                 <nav class="nav-enlaces">
-                <button class="campo-pag" type="button"  id="comic">Ver Ahora</button>    
+                <a class="campo-pag ver-ahora" href="favoritas.php">Guardar en Favoritos</a>    
                 </nav>
         
                

@@ -1,4 +1,3 @@
-
 <?php 
  include './config/database.php';
  $db= conectarDB();
@@ -37,18 +36,8 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
       $query = " INSERT INTO usuarios (nombre, apellido, email, password, fecha_nac, pais, esadmin, info)
       VALUES ( '$nombre', '$apellido', '$email', '$password', '$fecha_nac', '$pais', $esadmin, '$info');";
       $insertar = mysqli_query($db,$query);
-
-      if ($insertar) {
-        header("Location: /login.php?msj=1"); 
-      }
-
-   
-  }
-}
-?>
-
-
-
+      if($insertar){header("Location:/login.php?msj=1");}}}?>
+      
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     </header>
     <section >
            
-        <form class="formulario" method="POST" action="">
+        <form class="formulario" method="POST" action="registrarse.php">
             <fieldset>
                 <legend>Registro</legend>
 
@@ -119,6 +108,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
             </div>
 
             <div class="campo">
+            <label for="pais" class="form-label">País</label>
                 <select class="input-text" id="pais" value="<?php echo $pais;?>" autocomplete="off" name="pais">
                     <option class="input-text" selected disabled >-Seleccione País-</option>
                     <option class="input-text" value="arg">Argentina</option>
@@ -141,6 +131,18 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
         </section>
 
         
- 
+        <footer>
+        <div class=" nav-pie nav-footer">
+            <div class="nav-logo">
+             
+            </div>
+            <nav class="nav-enlaces">
+                <a class="" href="#">Terminos y Condiciones</a>
+                <a class="" href="#">Preguntas Frecuentes</a>
+                <a class="" href="#">Ayuda</a>
+                <a class="sesion" href="login.php">Administrador de Peliculas</a>
+            </nav>
+            </div>
+    </footer>
   </body>
 </html>

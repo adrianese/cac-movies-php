@@ -1,7 +1,6 @@
 <?php 
 include './config/database.php';
 $db= conectarDB();
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -86,38 +85,32 @@ $db= conectarDB();
           </section>  
         <section class="aclamadas">
             <h3>Las Más Aclamadas</h3>
-
-          
             <div class="grilla-a">
             <?php 
-            
-            $aclamadas = "SELECT * FROM movies ORDER BY estrellas DESC LIMIT 10";
+            $aclamadas = "SELECT * FROM movies ORDER BY estrellas DESC LIMIT 12";
             $resultado = mysqli_query($db, $aclamadas);
-            
+                    
             while ( $movie= mysqli_fetch_assoc($resultado)) { ?>
-            <div class="movie-cell">    
-                    <img src="img/<?php echo $movie["imagen"];?>.webp" alt="img movie" class="movie-a" > 
-                    <p class="p-star"><?php echo round(($movie['estrellas']/2), 1);?>
-                 
-                    <img src="img/star-regular.svg" alt="star" class="img-star" srcset=""></p>     
-            </div>
+                <div class="movie-cell">    
+                <img src="img/<?php echo $movie["imagen"];?>.webp" alt="img movie" class="movie-a"> 
+                <p class="p-star"><?php echo round(($movie['estrellas']/2), 1);?>
+                <img src="img/star-regular.svg" alt="star" class="img-star" srcset=""></p>     
+                </div>
             <?php  } ?>
         </div>
-       
         </section>
+
     </main>
-<div class="flotante">
-<a href="index.php">
-  <img src="img/uparrow.svg " alt="UP-arrow" srcset="">
-</a>
-</div>
+        <div class="flotante">
+                <a href="index.php"><img src="img/uparrow.svg " alt="UP-arrow" srcset=""></a>
+        </div>
     <footer>
         <div class="nav-footer nav-pie">
             <nav class="nav-enlaces ">
                 <a class="" href="#">Terminos y Condiciones</a>
                 <a class="" href="#">Preguntas Frecuentes</a>
                 <a class="" href="#">Ayuda</a>
-                <a class="sesion" href="admin.php">Administrador de Peliculas</a>
+                <a class="sesion" href="admin/admin.php">Administrador de Peliculas</a>
             </nav>
           </div>
     </footer>

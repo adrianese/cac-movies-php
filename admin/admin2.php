@@ -1,12 +1,9 @@
 <?php 
-session_start();
 $mensaje="";
 if (isset($_GET['msj'])==2) {
   $mensaje = 'Todos los Campos Son Necesarios';
   $alerta = 'error';
-} 
-
-?>
+}?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -32,7 +29,7 @@ if (isset($_GET['msj'])==2) {
         <header >
         <div class="nav-bg nav-principal">
             <div class="link-logo ">
-                <a class="logo-link animate__animated animate__shakeX "  href="index.php">
+                <a class="logo-link animate__animated animate__shakeX "  href="./../index.php">
                <img class="logo" src="./../img/film-solid.svg" alt="LOGO">
                 CAC-Movies</a>
             </div>
@@ -50,6 +47,9 @@ if (isset($_GET['msj'])==2) {
             
 
         <h2 class="tabla-titulo">Cargar Director</h2>
+        <p>1. Verificar Director con nombre y apellido.</p>
+        <p>2. Cargarlo.</p>
+        <p>3. Luego Cargar Película</p>
         <?php if ($mensaje) { ?>
               <div class="<?php echo $alerta; ?> ajuste">
                 <?php echo $mensaje;?>

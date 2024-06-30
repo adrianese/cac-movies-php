@@ -63,7 +63,7 @@ if (banner) {
     }
 
 async function consultaDirectoresAPI(nombre, apellido){
-   const url = 'http://localhost:3000/miapi/directoresapi';
+   const url = "/miapi/directoresapi/index.php";
     const resultado = await fetch(url);
     const directores = await resultado.json();
    //console.log(directores);

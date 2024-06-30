@@ -49,11 +49,13 @@ $consulta = mysqli_query($db, $query);
         <?php while ( $movie= mysqli_fetch_assoc($consulta)) { 
             // debuguear($movie);
             ?>
-             
+           
+         
             <div id="resumen" class="foto-resumen">
                 <div class="movie-cell box"> 
                 <img src="img/<?php echo $movie['imagen']?>.webp" alt="img movie" class="movie" >
                 </div> 
+                <a href="registrarse.php">Registrate para poder verla</a>
             </div>  
             <div id="titulo" class="contenido-resumen">      
                <div class="movie-titulo"> 

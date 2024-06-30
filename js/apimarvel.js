@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function cargarPersonajes(){
     let contenedorPersonajes = document.getElementById("personajes")
-   //const urlChars = "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=spider&modifiedSince=2000-01-01&apikey=71fdd75c4231892d70766da61cf2f7f9";
-    const urlChars = "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=ca&apikey=71fdd75c4231892d70766da61cf2f7f9";
-   //const urlChars ="https://gateway.marvel.com:443/v1/public/characters?limit=53&ts=1&apikey=71fdd75c4231892d70766da61cf2f7f9&hash=512e246575380509ac98785b9a87b555";
+        //const urlChars = "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=spider&modifiedSince=2000-01-01&apikey=71fdd75c4231892d70766da61cf2f7f9";
+        const urlChars = "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=ca&apikey=71fdd75c4231892d70766da61cf2f7f9";
+       //const urlChars ="https://gateway.marvel.com:443/v1/public/characters?limit=53&ts=1&apikey=71fdd75c4231892d70766da61cf2f7f9&hash=512e246575380509ac98785b9a87b555";
         fetch(urlChars)
         .then((response)=>response.json())
         .then((object)=>{

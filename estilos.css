@@ -275,9 +275,11 @@ h5{
 
 /* RESUMEN */
 .contenedor-resumen{
-    background-color: #616060;
+    /* background-color: #616060; */
+    background: linear-gradient(to right, #282727, #9a9a9a);
 }
 .resumen{
+
     max-width: 80%;
     margin: 0 auto;
     display: flex;
@@ -322,6 +324,21 @@ h5{
     margin: 6rem auto;
     display: flex;
     align-self: center;
+}
+.ver-ahora{
+    color: #FFF;
+    text-decoration: none;
+    margin: 3.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color:rgba(237, 45, 52, 0.855);
+     transform: scale(1);
+     transition:all .3s ease;
+}.ver-ahora:hover{
+    transition:all .3s ease;
+    background-color:rgba(192, 39, 44, 0.855);
+    transform: scale(1.1);
+    
 }
 
 /* navegacion footer */
@@ -463,14 +480,14 @@ h5{
 /* MQ al footer */
 
 @media screen and (max-width: 768px) {
-    .nav-pie > .nav-enlaces {
+   .nav-enlaces {
       display: grid;
       grid-template-columns: 1fr 1fr;
       justify-content: center ;
       align-items: center;
         background-color:  #900C3F;
         color: #FFF;   
-        margin-bottom: .5rem;
+       /* margin-bottom: .5rem;*/
         padding: 0;
     }         
  }  
@@ -781,7 +798,7 @@ button.actual{
         display: block;
     }
     .form-admin  input:not([type="submit"]), 
-    textarea {
+    textarea, select{
         padding: 1rem;
         display: block;
         width: 96%;
@@ -789,7 +806,7 @@ button.actual{
         background-color: #F0F0F0;
         border: 1px solid rgb(80, 80, 80);
         border-radius: 1rem;
-        margin: auto 1rem;
+        margin: auto 0;
         margin-bottom: 2rem;
        
     }
@@ -935,7 +952,9 @@ nav ul ul li a{
 
 
  /* PANEL USUARIO */
-
+.nav-pie{
+    background-color: #900C3F;
+}
 
  .mov{
     height: 21rem;
@@ -979,7 +998,7 @@ nav ul ul li a{
      display: flex;
      flex-direction: column;
      justify-content: center;
-     align-items: center;
+   text-align: center;
      color: #FFF;
      transform: scale(0);
      transition: .3s ease;

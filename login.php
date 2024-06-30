@@ -1,5 +1,5 @@
-
 <?php 
+session_start();
 $mensaje="";
 if (isset($_GET['msj'])==1) {
   $mensaje = 'Datos Guardados correctamente, podes Iniciar Sesión';
@@ -11,29 +11,24 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST') {
     $db= conectarDB();
     $email= $_POST['email'];
     $password= $_POST['password'];
-    $query= " SELECT nombre, email, password, esadmin FROM usuarios WHERE (email = '$email') AND (password = '$password');";
+    $query= " SELECT id_usuario, nombre, email, password, esadmin FROM usuarios WHERE (email = '$email') AND (password = '$password');";
     $datos = mysqli_query($db, $query);
     $datos= mysqli_fetch_assoc($datos);
     if ($datos) {
-    //debuguear($datos);
-    session_start();
-    $_SESSION['nombre']= $datos['nombre'];
-    $_SESSION['esadmin']= $datos['esadmin'];
-
-    if ($password === $datos['password'] && $datos['esadmin']==='0') {
-        header('Location: admin/usuario.php?modo=todas');  
-    }
-    elseif ($password === $datos['password'] && $datos['esadmin']==='1') { 
-        header('Location: admin/admin.php');
-    }
- 
-    } else{
-        $mensaje = 'Verifica tus Datos de Registro';
-        $alerta = 'error';
- // header('Location: /login.php');
+        $_SESSION['nombre']=$datos['nombre'];
+        $_SESSION['id']=$datos['id_usuario'];
+        if($password === $datos['password'] && $datos['esadmin']==='0'){
+        header("Location:admin/usuario.php?modo=todas");
+        }elseif($password === $datos['password'] && $datos['esadmin']==='1'){ 
+        header("Location:admin/admin.php");
+        }
+        }else{
+          $mensaje = 'Verifica tus Datos de Registro';
+          $alerta = 'error';
+          //header("Location: login.php?msj=2");
     } 
-}
-?>
+        }
+        ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,18 +64,16 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST') {
           </nav>
       </div>
     </header>
-    <section class="" >
-  
-        <form class="formulario" method="POST" action="login.php">
-            <fieldset>  
-            <legend>Iniciar Sesión</legend>      
-
-                <?php if ($mensaje) { ?>
+    <section class="">
+    <?php if ($mensaje) { ?>
               <div class="<?php echo $alerta; ?> ajuste">
                 <?php echo $mensaje;?>
               </div>
          <?php   } ?>
-
+  
+        <form class="formulario" method="POST" action="login.php">
+            <fieldset>  
+            <legend>Iniciar Sesión</legend>      
               <div class="campo">
                 <label for="correo" class="form-label">Correo</label>
                 <input type="email" class=" input-text" id="email"  name="email" 

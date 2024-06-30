@@ -1,19 +1,16 @@
 <?php 
-    session_start();
-    $nombre = $_SESSION['nombre'] ?? "Admin";
+session_start();
+$nombre = $_SESSION['nombre'] ?? "Admin";
     $director_consulta= "";
-
     $mensaje="";
-if (isset($_GET['msj'])==1) {
-  $mensaje = 'Registro Guardado Correctamente';
-  $alerta = 'exito';
+    if (isset($_GET['msj'])==1) {
+    $mensaje = 'Registro Guardado Correctamente';
+    $alerta = 'exito';
 } 
     include './../config/database.php';
     $db = conectarDB();
     $query = "SELECT id_usuario, nombre, apellido, email, fecha_nac, pais, esadmin, info FROM usuarios;";
-    $consulta_usuarios = mysqli_query($db, $query);
-
-    ?>
+    $consulta_usuarios = mysqli_query($db, $query);?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +24,7 @@ if (isset($_GET['msj'])==1) {
 <header >
         <div class="nav-bg nav-principal">
             <div class="link-logo ">
-                <a class="logo-link animate__animated animate__shakeX "  href="../index.php">
+                <a class="logo-link animate__animated animate__shakeX "  href="./../index.php">
                <img class="logo" src="../img/film-solid.svg" alt="LOGO">
                 CAC-Movies</a>
             </div>
@@ -85,7 +82,6 @@ if (isset($_GET['msj'])==1) {
             <?php while($usuario= mysqli_fetch_assoc($consulta_usuarios)) { ?>
                 <tr>
                 <th scope="row"><?php echo $usuario['id_usuario'];?></th>
-    
                 <td> <?php echo $usuario['nombre'];?></td>
                 <td><?php echo $usuario['apellido'];?></td>
                 <td><?php echo $usuario['email'];?></td>
@@ -93,9 +89,8 @@ if (isset($_GET['msj'])==1) {
                 <td><?php echo $usuario['pais'];?></td>
                 <td><?php echo $usuario['esadmin'];?></td>
                 <td><?php echo $usuario['info'];?></td>
-                <td> <div class="div-iconos"><a href="#"> <img src="./../img/pen-solid.svg" class="logo" alt="" srcset=""></a><a href="#"><img src="./../img/trash-solid.svg" class="logo" alt="" srcset="">
+                <td> <div class="div-iconos"><a href="editar.php?usuario=<?php echo $usuario['id_usuario'];?>"> <img src="./../img/pen-solid.svg" class="logo" alt="" srcset=""></a><a href="borrar.php?usuario=<?php echo $usuario['id_usuario'];?>"><img src="./../img/trash-solid.svg" class="logo" alt="" srcset="">
                 </a></div></td>
-      
                 </tr>
             <?php }?>
 
@@ -103,19 +98,15 @@ if (isset($_GET['msj'])==1) {
             </table>
         </section>
   
-        <?php 
-
+    <?php 
     $nombre = $_SESSION['nombre'] ?? "Admin";
     $director_consulta= "";
-  
-  
     $query= "SELECT movies.id_movie, movies.titulo , movies.genero, movies.calificacion , movies.anio , movies.estrellas, movies.imagen, directores.nombre, directores.apellido
 FROM movies INNER JOIN directores 
 ON movies.director = directores.id_director
 ORDER BY movies.id_movie;";
     //$query = "SELECT * FROM movies;";
     $consulta_movies = mysqli_query($db, $query);
-
     ?>
   
     
@@ -147,7 +138,7 @@ ORDER BY movies.id_movie;";
                 <td><?php echo $usuario['estrellas'];?></td>
                 <td><?php echo $usuario['nombre'];?>  <?php echo $usuario['apellido'];?></td>
                 <td> <img src="./../img/<?php echo $usuario['imagen'].'.webp';?>" width="80" alt=""> </td>
-                <td> <div class="div-iconos"><a href="#"> <img src="./../img/pen-solid.svg" class="logo" alt="" srcset=""></a><a href="#"><img src="./../img/trash-solid.svg" class="logo" alt="" srcset="">
+                <td> <div class="div-iconos"><a href="editar.php?movie=<?php echo $usuario['id_movie'];?>"> <img src="./../img/pen-solid.svg" class="logo" alt="" srcset=""></a><a href="borrar.php?movie=<?php echo $usuario['id_movie'];?>"><img src="./../img/trash-solid.svg" class="logo" alt="" srcset="">
                 </a></div></td>
       
                 </tr>
@@ -163,6 +154,20 @@ ORDER BY movies.id_movie;";
 
     
     </main>
+    
+    </main>
+    
+    <footer>
+        <div class=" nav-pie nav-footer">
+            <div class="nav-logo"></div>
+            <nav class="nav-enlaces">   
+            <a class="" href="">Copiright 2024</a>
+            <a class="sesion" href="admin.php">Administrador de Peliculas</a>
+            </nav>
+        </div>
+    </footer>
+  
+
    
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script src="../js/usuario.js"></script>

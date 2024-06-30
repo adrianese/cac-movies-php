@@ -24,7 +24,7 @@ let items=38;  // total items
 
  async function cargarPeliculas(pindex=0, itemsPP= 8){
    if(document.getElementById("tendencias")){
-      const url = 'http://localhost:3000/miapi/todasApi';
+      const url = "/miapi/moviesApi/index.php";
       const resultado = await fetch(url);
       const movies = await resultado.json();
    
@@ -86,17 +86,17 @@ async function nuevaBusqueda(campo){
       const resultBuscador = document.getElementById('resultBuscador');
        if(campo){
          ///EXISTE CAMPO ////////
-         const url = 'http://localhost:3000/miapi/todasApi';
+         const url = "/miapi/moviesApi/index.php";
          const resultado = await fetch(url);
          const movies = await resultado.json();
-         console.log(movies);
+         //console.log(movies);
          let nuevaBusqueda = [] ; 
          tituloBusqueda =[];
          generoBusqueda=[];
        tituloBusqueda = movies.filter( movie => movie.titulo.toLowerCase() === campo.toLowerCase() );
        generoBusqueda = movies.filter((dato)=>(dato.genero) === campo);
        nuevaBusqueda=[...tituloBusqueda, ...generoBusqueda];
-       console.log(nuevaBusqueda);
+      // console.log(nuevaBusqueda);
       if (nuevaBusqueda) {
 
       let movies = nuevaBusqueda;
