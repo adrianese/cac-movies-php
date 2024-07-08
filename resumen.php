@@ -55,7 +55,9 @@ $consulta = mysqli_query($db, $query);
                 <div class="movie-cell box"> 
                 <img src="img/<?php echo $movie['imagen']?>.webp" alt="img movie" class="movie" >
                 </div> 
-                <a href="registrarse.php">Registrate para poder verla</a>
+                <nav class="nav-enlaces">
+                <a class="campo-pag ver-ahora" href="registrarse.php">Registrate para verla</a>
+                </nav>
             </div>  
             <div id="titulo" class="contenido-resumen">      
                <div class="movie-titulo"> 

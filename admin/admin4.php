@@ -12,7 +12,7 @@
     $query = "SELECT id_usuario, nombre, apellido, email, fecha_nac, pais, esadmin, info FROM usuarios;";
     $consulta_usuarios = mysqli_query($db, $query);
 
-    $query = "SELECT id_director, nombre, apellido FROM directores;";
+    $query = "SELECT id_director, nombre, apellido FROM directores ORDER BY apellido ASC;";
     $consulta_directores = mysqli_query($db, $query);?>
 
 <!DOCTYPE html>
@@ -69,35 +69,34 @@
                 <legend>Cargar Películas</legend>      
                     <label for="titulo">Título</label>
                     <input type="text" placeholder="Título" 
-                    name="titulo" value="" id="">
+                    name="titulo" value="" >
 
                     <label for="descripcion">Descripción</label>
-                    <textarea name="descripcion" id="" placeholder="" 
+                    <textarea name="descripcion" id="descripcion" placeholder="" 
                     cols="30" rows="10"></textarea>
 
                     <label for="genero">Género</label>
                     <input type="text" placeholder="Género" 
-                    name="genero" value="" id="">  
+                    name="genero" value="" >  
 
                     <label for="calificacion">Calificación</label>
-                    <input type="text" placeholder="Calificacion para el público: Ej ATP" 
+                    <input type="text" placeholder="Calificación para el público: Ej ATP" 
                     name="calificacion" value=""> 
         
                     <label for="anio">Año Estreno</label>
                     <input type="number" min="1900" max="2025"  placeholder="Año Estreno" 
-                    name="anio" value="" id="">
+                    name="anio" value="" >
 
-                    <label for="anio">Estrellas</label>
+                    <label for="estrellas">Estrellas</label>
                     <input type="number" min="0" max="5"  placeholder="Estrellas: 1 ~ 5" 
-                    name="estrellas" value="" id="">
+                    name="estrellas" value="" >
 
                     <label for="imagen">Imagen</label>
                     <input type="file" placeholder="Imagen.webp" 
                     name="imagen"  accept="image/webp" value="">   
                 
                     <label for="director">Director</label>   
-                  
-                    <select class="" id="" value="" autocomplete="off" name="director">
+                    <select class=""  value="" autocomplete="off" name="director">
                     <option class="input-text" selected disabled >-Seleccione el Director-</option>
                     <?php while($director= mysqli_fetch_assoc($consulta_directores)) { ?> 
                   
@@ -122,8 +121,8 @@
         <div class=" nav-pie nav-footer">
             <div class="nav-logo"></div>
             <nav class="nav-enlaces">   
-            <a class="" href="">Copiright 2024</a>
-            <a class="sesion" href="admin.php">Administrador de Peliculas</a>
+            <a class="" href="">Copyright 2024</a>
+            <a class="sesion" href="#">Administrador de Peliculas</a>
             </nav>
         </div>
     </footer>

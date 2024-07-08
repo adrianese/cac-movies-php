@@ -106,8 +106,8 @@ if (isset($_GET['msj'])==2) {
         <div class=" nav-pie nav-footer">
             <div class="nav-logo"></div>
             <nav class="nav-enlaces">   
-            <a class="" href="">Copiright 2024</a>
-            <a class="sesion" href="login.php">Administrador de Peliculas</a>
+            <a class="" href="">Copyright 2024</a>
+            <a class="sesion" href="#">Administrador de Peliculas</a>
             </nav>
         </div>
     </footer>

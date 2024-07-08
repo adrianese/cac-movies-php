@@ -328,10 +328,10 @@ h5{
 .ver-ahora{
     color: #FFF;
     text-decoration: none;
-    margin: 3.1rem;
+    margin: 2.5rem;
     text-transform: uppercase;
     cursor: pointer;
-    background-color:rgba(237, 45, 52, 0.855);
+    background-color:#900C3F;
      transform: scale(1);
      transition:all .3s ease;
 }.ver-ahora:hover{
@@ -526,10 +526,10 @@ h5{
     margin-bottom: 2rem;  
 }
 .formulario .label-legend {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.4rem;
+    font-weight: 600;
     margin: 1rem;
-    color: #991e17; 
+    color: #dd7872; 
 }
 .campo {
     margin-bottom: 1rem;
@@ -833,6 +833,7 @@ button.actual{
 
 .main-panel{
     background-color: #393939;
+    min-height: 48rem;
 }
 
 .btn-menu{

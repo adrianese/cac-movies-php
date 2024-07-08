@@ -3,10 +3,22 @@ session_start();
 $nombre = $_SESSION['nombre'] ?? "Admin";
     $director_consulta= "";
     $mensaje="";
-    if (isset($_GET['msj'])==1) {
+    $msj="";
+    if ($_SERVER['REQUEST_METHOD']==='GET') {
+        $msj = $_GET['msj']?? '';
+    
+    if ($msj =='1') {
     $mensaje = 'Registro Guardado Correctamente';
     $alerta = 'exito';
-} 
+} else if($msj =='2') {
+    $mensaje = 'Registro Editado Correctamente';
+    $alerta = 'exito';
+
+}else if($msj=='3') {
+    $mensaje = 'Registro Borrado Correctamente';
+    $alerta = 'error';
+}
+}
     include './../config/database.php';
     $db = conectarDB();
     $query = "SELECT id_usuario, nombre, apellido, email, fecha_nac, pais, esadmin, info FROM usuarios;";
@@ -53,17 +65,17 @@ $nombre = $_SESSION['nombre'] ?? "Admin";
     </nav>
 
     <main id="todas" class="main-panel">
-        <section class="contenedor-mv ajuste">
+      
+
+    <section id="secUsuarios"  class="contenedor-mv">       
+        <h3 class=" mov-titulo">Usuarios Registrados</h3>
+        <div class="contenedor-mv ajuste">
         <?php if ($mensaje) { ?>
               <div class="<?php echo $alerta; ?> ajuste">
                 <?php echo $mensaje;?>
               </div>
          <?php   } ?>
-
-        </section>
-
-    <section id="secUsuarios"  class="contenedor-mv">       
-        <h3 class=" mov-titulo">Usuarios Registrados</h3>
+        </div>
             <table class="tabla">
             <thead>
                 <tr>
@@ -89,7 +101,7 @@ $nombre = $_SESSION['nombre'] ?? "Admin";
                 <td><?php echo $usuario['pais'];?></td>
                 <td><?php echo $usuario['esadmin'];?></td>
                 <td><?php echo $usuario['info'];?></td>
-                <td> <div class="div-iconos"><a href="editar.php?usuario=<?php echo $usuario['id_usuario'];?>"> <img src="./../img/pen-solid.svg" class="logo" alt="" srcset=""></a><a href="borrar.php?usuario=<?php echo $usuario['id_usuario'];?>"><img src="./../img/trash-solid.svg" class="logo" alt="" srcset="">
+                <td> <div class="div-iconos"><a href="ebusuario.php?usuario=<?php echo $usuario['id_usuario'];?>"> <img src="./../img/pen-solid.svg" class="logo" alt="" srcset=""></a><a href="ebusuario.php?usuario=<?php echo $usuario['id_usuario'];?>"><img src="./../img/trash-solid.svg" class="logo" alt="" srcset="">
                 </a></div></td>
                 </tr>
             <?php }?>
@@ -138,7 +150,7 @@ ORDER BY movies.id_movie;";
                 <td><?php echo $usuario['estrellas'];?></td>
                 <td><?php echo $usuario['nombre'];?>  <?php echo $usuario['apellido'];?></td>
                 <td> <img src="./../img/<?php echo $usuario['imagen'].'.webp';?>" width="80" alt=""> </td>
-                <td> <div class="div-iconos"><a href="editar.php?movie=<?php echo $usuario['id_movie'];?>"> <img src="./../img/pen-solid.svg" class="logo" alt="" srcset=""></a><a href="borrar.php?movie=<?php echo $usuario['id_movie'];?>"><img src="./../img/trash-solid.svg" class="logo" alt="" srcset="">
+                <td> <div class="div-iconos"><a href="ebmovie.php?movie=<?php echo $usuario['id_movie'];?>"> <img src="./../img/pen-solid.svg" class="logo" alt="" srcset=""></a><a href="ebmovie.php?movie=<?php echo $usuario['id_movie'];?>"><img src="./../img/trash-solid.svg" class="logo" alt="" srcset="">
                 </a></div></td>
       
                 </tr>
@@ -161,8 +173,8 @@ ORDER BY movies.id_movie;";
         <div class=" nav-pie nav-footer">
             <div class="nav-logo"></div>
             <nav class="nav-enlaces">   
-            <a class="" href="">Copiright 2024</a>
-            <a class="sesion" href="admin.php">Administrador de Peliculas</a>
+            <a class="" href="">Copyright 2024</a>
+            <a class="sesion" href="#">Administrador de Peliculas</a>
             </nav>
         </div>
     </footer>

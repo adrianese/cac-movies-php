@@ -74,7 +74,7 @@
             </li>
             <li><a class="btn-feat"  href="consultas.php?modo=calificada">Mejor Calificadas<span>
             <img src="../img/downarrow.svg" class="arrow-menu first" alt="" srcset=""></span></a></li>
-            <li><a class="btn-serv" href="consultas.php?modo=favoritas">Mis Favoritas<span>
+            <li><a class="btn-fea" href="consultas.php?modo=favoritas">Mis Favoritas<span>
                 <img src="../img/downarrow.svg" class="arrow-menu second" alt="" srcset=""></span></a>
                 <ul class="show-serv">
                     <li><a href="#">Calificadas</a></li>
@@ -86,12 +86,11 @@
         </ul>
     </nav>
 
-    <main id="todas" class="">
+    <main id="todas" class="main-panel">
     <h3 class="mov-titulo"> <?php echo $titulo;?> </h3>
-    <div class="mov-grilla">
-        
+    <div class="mov-grilla">    
+    
     <?php while($movies = mysqli_fetch_assoc($consulta)) { ?>
-          
       <div class=" mov-cell mov-box "> 
       <img src="./../img/<?php echo $movies['imagen'];?>.webp" alt="Movie" class="mov">
       <a href="resumen.php?item=<?php echo $movies['id_movie'];?>">
@@ -100,28 +99,29 @@
       <p>género: <?php echo $movies['genero'];?></p>
       <p>Ver más..</p>
       </div>  </a>
+    
       <?php if($modo=='calificada'){?>
       <p class="p-star"><?php echo round(($movies['estrellas']/2), 1);?>
-      <img src="./../img/star-regular.svg" alt="star" class="img-star" srcset=""></p>  
+      <img src="./../img/star-regular.svg" alt="star" class="img-star" srcset=""></p> 
+    
         <?php }?>
         </div>
-       <?php } ?>
-        
+        <?php }?>   
       </div>    
-
-    </main>
+      
+      </main>
   
     <footer>
-        <div class="nav-footer">
+        <div class="nav-footer nav-pie">
             <div class="nav-logo"></div>
             <nav class="nav-enlaces">   
-            <a class="" href="">Copiright 2024</a>
-            <a class="sesion" href="admin.php">Administrador de Peliculas</a>
+            <a class="" href="">Copyright 2024</a>
+            <a class="sesion" href="">Administrador de Peliculas</a>
             </nav>
         </div>
     </footer>
   
-
+  
    
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script src="./../js/usuario.js"></script>

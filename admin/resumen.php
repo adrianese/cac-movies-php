@@ -97,7 +97,7 @@ $consulta = mysqli_query($db, $query);
                 <a class="" href="#">Terminos y Condiciones</a>
                 <a class="" href="#">Preguntas Frecuentes</a>
                 <a class="" href="#">Ayuda</a>
-                <a class="sesion" href="login.php">Administrador de Peliculas</a>
+                <a class="sesion" href="#">Administrador de Peliculas</a>
             </nav>
             </div>
     </footer>
